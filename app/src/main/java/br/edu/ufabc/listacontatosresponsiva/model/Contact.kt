@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosresponsiva
+package br.edu.ufabc.listacontatosresponsiva.model
 
 data class Contact(
     var name: String,

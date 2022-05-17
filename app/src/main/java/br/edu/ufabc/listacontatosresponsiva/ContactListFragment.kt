@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.ufabc.listacontatosresponsiva.databinding.ContactListItemBinding
 import br.edu.ufabc.listacontatosresponsiva.databinding.FragmentContactListBinding
+import br.edu.ufabc.listacontatosresponsiva.model.Contact
 
-class ContactListFragment(private val contacts: List<Contact>) : Fragment() {
+class ContactListFragment : Fragment() {
     private lateinit var binding: FragmentContactListBinding
 
     companion object {
@@ -58,7 +59,7 @@ class ContactListFragment(private val contacts: List<Contact>) : Fragment() {
 
         override fun onViewRecycled(holder: ContactHolder) {
             super.onViewRecycled(holder)
-            Log.d("APP", "Recycled holder at position ${holder.adapterPosition}")
+            Log.d("APP", "Recycled holder at position ${holder.bindingAdapterPosition}")
         }
     }
 
@@ -73,9 +74,11 @@ class ContactListFragment(private val contacts: List<Contact>) : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        binding.recyclerviewContactList.apply {
-            adapter = ContactAdapter(contacts)
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        activity?.let {
+            binding.recyclerviewContactList.apply {
+                adapter = ContactAdapter((it.application as App).repository.getAll())
+                addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            }
         }
     }
 }

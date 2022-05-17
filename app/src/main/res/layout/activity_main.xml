@@ -6,7 +6,8 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_fragment_container"
+        android:id="@+id/contact_list_fragment_container"
+        android:name="br.edu.ufabc.listacontatosresponsiva.ContactListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
