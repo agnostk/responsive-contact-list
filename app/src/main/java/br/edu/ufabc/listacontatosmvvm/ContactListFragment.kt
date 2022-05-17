@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosresponsiva
+package br.edu.ufabc.listacontatosmvvm
 
 import android.os.Bundle
 import android.util.Log
@@ -7,20 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import br.edu.ufabc.listacontatosresponsiva.databinding.ContactListItemBinding
-import br.edu.ufabc.listacontatosresponsiva.databinding.FragmentContactListBinding
-import br.edu.ufabc.listacontatosresponsiva.model.Contact
+import br.edu.ufabc.listacontatosmvvm.databinding.ContactListItemBinding
+import br.edu.ufabc.listacontatosmvvm.databinding.FragmentContactListBinding
+import br.edu.ufabc.listacontatosmvvm.model.Contact
 
 class ContactListFragment : Fragment() {
     private lateinit var binding: FragmentContactListBinding
-
-    companion object {
-        const val itemClickedKey = "itemClickedKey"
-        const val itemClickedPosition = "itemClickedPosition"
-    }
+    private val viewModel: MainViewModel by activityViewModels()
 
     private inner class ContactAdapter(val contacts: List<Contact>) :
         RecyclerView.Adapter<ContactAdapter.ContactHolder>() {
@@ -31,10 +28,7 @@ class ContactListFragment : Fragment() {
 
             init {
                 itemBinding.root.setOnClickListener {
-                    setFragmentResult(
-                        itemClickedKey,
-                        bundleOf(itemClickedPosition to bindingAdapterPosition)
-                    )
+                    viewModel.clickedItemId.value = getItemId(bindingAdapterPosition)
                 }
             }
         }
@@ -57,6 +51,8 @@ class ContactListFragment : Fragment() {
 
         override fun getItemCount(): Int = contacts.size
 
+        override fun getItemId(position: Int): Long = contacts[position].id
+
         override fun onViewRecycled(holder: ContactHolder) {
             super.onViewRecycled(holder)
             Log.d("APP", "Recycled holder at position ${holder.bindingAdapterPosition}")
@@ -76,7 +72,7 @@ class ContactListFragment : Fragment() {
         super.onStart()
         activity?.let {
             binding.recyclerviewContactList.apply {
-                adapter = ContactAdapter((it.application as App).repository.getAll())
+                adapter = ContactAdapter(viewModel.allContacts())
                 addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             }
         }

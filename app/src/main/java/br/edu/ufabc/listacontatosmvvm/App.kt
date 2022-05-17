@@ -1,7 +1,7 @@
-package br.edu.ufabc.listacontatosresponsiva
+package br.edu.ufabc.listacontatosmvvm
 
 import android.app.Application
-import br.edu.ufabc.listacontatosresponsiva.model.Repository
+import br.edu.ufabc.listacontatosmvvm.model.Repository
 
 class App : Application() {
     companion object {

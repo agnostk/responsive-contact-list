@@ -1,12 +1,10 @@
-package br.edu.ufabc.listacontatosresponsiva.model
+package br.edu.ufabc.listacontatosmvvm.model
 
-import android.util.Log
-import br.edu.ufabc.listacontatosresponsiva.MainActivity
 import com.beust.klaxon.Klaxon
 import com.beust.klaxon.KlaxonException
-import com.google.android.material.snackbar.Snackbar
 import java.io.FileNotFoundException
 import java.io.InputStream
+import java.text.FieldPosition
 
 class Repository {
     private lateinit var contacts: List<Contact>
@@ -23,4 +21,10 @@ class Repository {
 
     fun getAll() = if (this::contacts.isInitialized) contacts else
         throw Exception("No data has been fetched yet")
+
+    fun getAt(position: Int) = contacts[position]
+
+    fun getById(id: Long) = contacts.find {
+        it.id == id
+    }
 }

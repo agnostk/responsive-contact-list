@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosresponsiva
+package br.edu.ufabc.listacontatosmvvm
 
 import android.os.Bundle
 import android.util.Log
@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import br.edu.ufabc.listacontatosresponsiva.databinding.FragmentContactItemBinding
+import androidx.fragment.app.activityViewModels
+import br.edu.ufabc.listacontatosmvvm.databinding.FragmentContactItemBinding
 
 class ContactItemFragment : Fragment() {
     private lateinit var binding: FragmentContactItemBinding
-
-    companion object {
-        const val contactPosition = "contactPosition"
-    }
+    private val viewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,18 +26,14 @@ class ContactItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         try {
-            arguments?.let { bundle ->
-                val contactPosition = bundle.getInt(ContactItemFragment.contactPosition)
-
-                activity?.let { activity ->
-                    val contact = (activity.application as App).repository.getAll()[contactPosition]
-
+            viewModel.clickedItemId.value?.let { contactId ->
+                viewModel.getById(contactId)?.let { contact ->
                     binding.contactListItemFullName.text = contact.name
                     binding.contactListItemPhoneValue.text = contact.phone
                     binding.contactListItemEmailValue.text = contact.email
                     binding.contactListItemAddressValue.text = contact.address
-                } ?: throw Exception("Failed to access host activity")
-            } ?: throw Exception("Failed to access fragment arguments")
+                } ?: throw Exception("Failed to find contact with id $contactId")
+            } ?: throw Exception("Could not obtain contact id")
         } catch (e: Exception) {
             Log.e("VIEW", "Failed to create item detail view", e)
             binding.root.visibility = View.INVISIBLE

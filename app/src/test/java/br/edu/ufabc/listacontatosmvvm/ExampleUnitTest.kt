@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosresponsiva
+package br.edu.ufabc.listacontatosmvvm
 
 import org.junit.Test
 
