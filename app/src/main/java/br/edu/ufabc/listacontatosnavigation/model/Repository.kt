@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosslidingpane.model
+package br.edu.ufabc.listacontatosnavigation.model
 
 import com.beust.klaxon.Klaxon
 import com.beust.klaxon.KlaxonException

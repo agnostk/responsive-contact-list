@@ -1,7 +1,7 @@
-package br.edu.ufabc.listacontatosslidingpane
+package br.edu.ufabc.listacontatosnavigation
 
 import android.app.Application
-import br.edu.ufabc.listacontatosslidingpane.model.Repository
+import br.edu.ufabc.listacontatosnavigation.model.Repository
 
 class App : Application() {
     companion object {

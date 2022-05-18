@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosslidingpane
+package br.edu.ufabc.listacontatosnavigation
 
 import android.os.Bundle
 import android.util.Log
@@ -6,9 +6,10 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.commit
+import androidx.navigation.findNavController
+import androidx.navigation.navOptions
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
-import br.edu.ufabc.listacontatosslidingpane.databinding.ActivityMainBinding
+import br.edu.ufabc.listacontatosnavigation.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -51,17 +52,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun bindEvents() {
         try {
+            onBackPressedDispatcher.addCallback(
+                this@MainActivity,
+                CustomOnBackPressedCallback(binding.slidingPaneLayout, viewModel)
+            )
             viewModel.clickedItemId.observe(this) {
-                it?.let {
-                    supportFragmentManager.commit {
-                        ContactItemFragment().apply {
-                            replace(binding.contactItemFragmentContainer.id, this)
-                            onBackPressedDispatcher.addCallback(
-                                this@MainActivity,
-                                CustomOnBackPressedCallback(binding.slidingPaneLayout, viewModel)
-                            )
+                it?.let { contactId ->
+                    val navController = binding.contactItemFragmentContainer.findNavController()
+                    val action = ContactItemFragmentDirections.showItemDetails(contactId)
+
+                    navController.navigate(action, navOptions {
+                        popUpTo(navController.graph.startDestinationId) {
+                            inclusive = true
                         }
-                    }
+                    })
+
                     binding.slidingPaneLayout.open()
                 }
             }

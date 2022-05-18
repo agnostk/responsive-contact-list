@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosslidingpane
+package br.edu.ufabc.listacontatosnavigation
 
 import android.os.Bundle
 import android.util.Log
@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import br.edu.ufabc.listacontatosslidingpane.databinding.ContactListItemBinding
-import br.edu.ufabc.listacontatosslidingpane.databinding.FragmentContactListBinding
-import br.edu.ufabc.listacontatosslidingpane.model.Contact
+import br.edu.ufabc.listacontatosnavigation.databinding.ContactListItemBinding
+import br.edu.ufabc.listacontatosnavigation.databinding.FragmentContactListBinding
+import br.edu.ufabc.listacontatosnavigation.model.Contact
 
 class ContactListFragment : Fragment() {
     private lateinit var binding: FragmentContactListBinding

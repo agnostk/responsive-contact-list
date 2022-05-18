@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="br.edu.ufabc.listacontatosslidingpane">
+    package="br.edu.ufabc.listacontatosnavigation">
 
     <application
-        android:name="br.edu.ufabc.listacontatosslidingpane.App"
+        android:name="br.edu.ufabc.listacontatosnavigation.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,7 +15,7 @@
         android:theme="@style/Theme.ListaContatosResponsiva"
         tools:targetApi="31">
         <activity
-            android:name="br.edu.ufabc.listacontatosslidingpane.MainActivity"
+            android:name="br.edu.ufabc.listacontatosnavigation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

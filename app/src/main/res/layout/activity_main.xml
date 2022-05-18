@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.slidingpanelayout.widget.SlidingPaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sliding_pane_layout"
     android:layout_width="match_parent"
@@ -8,20 +9,23 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/contact_list_fragment_container"
-        android:name="br.edu.ufabc.listacontatosslidingpane.ContactListFragment"
+        android:name="br.edu.ufabc.listacontatosnavigation.ContactListFragment"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="0.4"
         android:minWidth="160dp"
         tools:layout="@layout/fragment_contact_list" />
 
+    <!-- NavHost -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/contact_item_fragment_container"
-        android:name="br.edu.ufabc.listacontatosslidingpane.ContactItemFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="0.6"
         android:minWidth="240dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
         tools:layout="@layout/fragment_contact_item" />
 
 </androidx.slidingpanelayout.widget.SlidingPaneLayout>
