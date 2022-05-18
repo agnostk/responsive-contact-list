@@ -1,10 +1,9 @@
-package br.edu.ufabc.listacontatosmvvm.model
+package br.edu.ufabc.listacontatosslidingpane.model
 
 import com.beust.klaxon.Klaxon
 import com.beust.klaxon.KlaxonException
 import java.io.FileNotFoundException
 import java.io.InputStream
-import java.text.FieldPosition
 
 class Repository {
     private lateinit var contacts: List<Contact>

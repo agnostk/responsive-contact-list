@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosmvvm.model
+package br.edu.ufabc.listacontatosslidingpane.model
 
 data class Contact(
     var id: Long,

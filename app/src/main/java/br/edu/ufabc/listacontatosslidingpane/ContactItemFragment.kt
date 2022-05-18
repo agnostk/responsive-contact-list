@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosmvvm
+package br.edu.ufabc.listacontatosslidingpane
 
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import br.edu.ufabc.listacontatosmvvm.databinding.FragmentContactItemBinding
+import br.edu.ufabc.listacontatosslidingpane.databinding.FragmentContactItemBinding
 
 class ContactItemFragment : Fragment() {
     private lateinit var binding: FragmentContactItemBinding

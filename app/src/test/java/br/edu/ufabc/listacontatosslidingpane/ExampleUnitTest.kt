@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosmvvm
+package br.edu.ufabc.listacontatosslidingpane
 
 import org.junit.Test
 

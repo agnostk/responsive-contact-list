@@ -1,19 +1,17 @@
-package br.edu.ufabc.listacontatosmvvm
+package br.edu.ufabc.listacontatosslidingpane
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import br.edu.ufabc.listacontatosmvvm.databinding.ContactListItemBinding
-import br.edu.ufabc.listacontatosmvvm.databinding.FragmentContactListBinding
-import br.edu.ufabc.listacontatosmvvm.model.Contact
+import br.edu.ufabc.listacontatosslidingpane.databinding.ContactListItemBinding
+import br.edu.ufabc.listacontatosslidingpane.databinding.FragmentContactListBinding
+import br.edu.ufabc.listacontatosslidingpane.model.Contact
 
 class ContactListFragment : Fragment() {
     private lateinit var binding: FragmentContactListBinding

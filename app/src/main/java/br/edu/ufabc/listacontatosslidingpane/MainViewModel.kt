@@ -1,4 +1,4 @@
-package br.edu.ufabc.listacontatosmvvm
+package br.edu.ufabc.listacontatosslidingpane
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
